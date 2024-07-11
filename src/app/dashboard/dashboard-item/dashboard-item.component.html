@@ -1,0 +1,9 @@
+<article>
+  <header>
+    <!-- using () for image because it is a signal -->
+    <img [src]="image().src" [alt]="image().alt" />
+    <h2>{{ title() }}</h2>
+  </header>
+  <!-- Here is content -->
+  <ng-content />
+</article>
