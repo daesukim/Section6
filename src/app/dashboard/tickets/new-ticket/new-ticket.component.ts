@@ -22,21 +22,19 @@ import { FormsModule } from '@angular/forms';
 })
 export class NewTicketComponent implements OnInit, AfterViewInit {
   @Output() add = new EventEmitter<{ title: string; text: string }>();
+  enteredTitle = '';
+  enteredText = '';
 
   ngOnInit() {
     console.log('ON INIT');
-    console.log(this.form()?.nativeElement);
   }
   ngAfterViewInit() {
     console.log('AFTER VIEW INIT');
-    console.log(this.form()?.nativeElement);
   }
 
-  //@ViewChild('form') form?: ElementRef<HTMLFormElement>;
-  private form = viewChild<ElementRef<HTMLFormElement>>('form');
-
-  onSubmit(title: string, ticketText: string) {
-    this.add.emit({ title: title, text: ticketText });
-    this.form()?.nativeElement.reset();
+  onSubmit() {
+    this.add.emit({ title: this.enteredTitle, text: this.enteredText });
+    this.enteredTitle = '';
+    this.enteredText = '';
   }
 }
